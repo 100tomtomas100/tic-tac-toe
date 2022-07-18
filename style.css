@@ -31,10 +31,10 @@ body {
     justify-items: center;
 }
 #game-board {
-    width: 21vw;
-    height: 21vw;
-    min-width: 150px;
-    min-height: 150px;
+    width: 30vw;
+    height: 30vw;
+    min-width: 200px;
+    min-height: 200px;
     background-color: #F7F9F6;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -48,7 +48,7 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    font-size: calc(1em + 2.5vw);
+    font-size: calc(1.5em + 2.5vw);
     font-style: italic;
 }
 #cell1, #cell2, #cell3, #cell4, #cell5, #cell6 {
@@ -74,9 +74,9 @@ body {
     font-size: 12px;
 }
 .modes button {
-    width: 21vw;
+    width: 30vw;
     height: 40px;
-    min-width: 150px;
+    min-width: 200px;
     border-radius: 20px;
     border-color: transparent;
     background-color: #D9F2FF;

@@ -122,7 +122,10 @@ const ticTacToe = (() => {
             Gameboard.cellsClickedId.push(element.getAttribute("id"));
             lastClickedCellNrSquare();
             victory();  
-            computer.modes(); 
+            computer.modes();
+            console.log(players.player1)
+            console.log(players.player2) 
+            console.log(players.start)
             
 
         }
@@ -246,11 +249,13 @@ const ticTacToe = (() => {
         }
     const buttonFunctions = {
             switchChoices: function () {
-            if (players.player1 === "x"){
-                players.player1 = "o";
-                reset();
-            } else if (players.player1 === "o"){
+            if (players.player1 === "o"){
                 players.player1 = "x";
+                players.player2 = "o"
+                reset();
+            } else if (players.player1 === "x"){
+                players.player1 = "o";
+                players.player2 = "x"
                 reset();
             }
             },
@@ -263,6 +268,7 @@ const ticTacToe = (() => {
             },
             cvp: function () {
                 players.computer.active = true;
+                players.computer.start = false;
                 document.getElementById("player2-computer").innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbspEasy";
                 document.getElementById("start1").innerHTML = "Start";
                 document.getElementById("start2").innerHTML = "";
@@ -284,14 +290,14 @@ const ticTacToe = (() => {
                     if(players.computer.active === true){
                     players.computer.start = true;
                 }
-                    players.start = "player2"
+                    players.start = "player2";
                     document.getElementById("start1").innerHTML = "";
                     document.getElementById("start2").innerHTML = "Start";
                 } else if (players.start === "player2"){
                     if(players.computer.active === true){
                         players.computer.start = false;
-                    }
-                    players.start = "player1"
+                }
+                    players.start = "player1";
                     document.getElementById("start1").innerHTML = "Start";
                     document.getElementById("start2").innerHTML = "";
                 }
@@ -309,23 +315,45 @@ const ticTacToe = (() => {
 const buttons = {
         reset:
             document.getElementById("reset").addEventListener("click", () => {
-                reset();
-                buttonFunctions.resetScore();
                 document.getElementById("start1").innerHTML = "Start";
                 document.getElementById("start2").innerHTML = "";
+                players.start = "player1";
+                players.player1 = "o"
+                players.player2 = "x"  
+                reset();
+                buttonFunctions.resetScore();
+                
             }),
         switchChoices : 
-            document.getElementById("switch-choices").addEventListener("click", buttonFunctions.switchChoices),
+            document.getElementById("switch-choices").addEventListener("click", () => {
+                document.getElementById("start1").innerHTML = "Start";
+                document.getElementById("start2").innerHTML = "";
+                players.computer.start = false;
+                buttonFunctions.switchChoices();
+                buttonFunctions.resetScore();
+            }),
         pvp:
             document.getElementById("pvp").addEventListener("click",() => {
+                document.getElementById("start1").innerHTML = "Start";
+                document.getElementById("start2").innerHTML = "";
+                players.start = "player1";
+                players.player1 = "o"
+                players.player2 = "x"  
                 buttonFunctions.pvp();
                 buttonFunctions.resetScore();
+                
                 
             }),
         cvp:
             document.getElementById("cvp").addEventListener("click", () => {
+                document.getElementById("start1").innerHTML = "Start";
+                document.getElementById("start2").innerHTML = "";
+                players.start = "player1";
+                players.player1 = "o"     
+                players.player2 = "x"        
                 buttonFunctions.cvp();
-                buttonFunctions.resetScore();                
+                buttonFunctions.resetScore(); 
+                
             }),
         popUpClose: 
             document.getElementById("pop-up").addEventListener("click", buttonFunctions.popUpClose)

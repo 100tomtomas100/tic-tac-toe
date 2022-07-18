@@ -156,13 +156,13 @@ const ticTacToe = (() => {
     ];
     const popUp = {
        box:  function () {
-        document.getElementById("pop-up").style.display = "block"
+        document.getElementById("pop-up").style.display = "block";
+        document.getElementById("pop-up-invisible").style.display = "block";
        },            
        boxtext: function(player, text) {
         document.getElementById("pop-up-text1").textContent = `${player}`;
         document.getElementById("pop-up-text2").textContent = `${text}`;
-       }
-      
+       }      
     }
         
     const victory = () => {
@@ -285,7 +285,8 @@ const ticTacToe = (() => {
 
             },
             popUpClose: function () {
-                document.getElementById("pop-up").style.display = "none";                
+                document.getElementById("pop-up").style.display = "none"; 
+                document.getElementById("pop-up-invisible").style.display ="none";               
                 if (players.start === "player1"){
                     if(players.computer.active === true){
                     players.computer.start = true;
@@ -328,6 +329,7 @@ const buttons = {
             document.getElementById("switch-choices").addEventListener("click", () => {
                 document.getElementById("start1").innerHTML = "Start";
                 document.getElementById("start2").innerHTML = "";
+                players.start = "player1";
                 players.computer.start = false;
                 buttonFunctions.switchChoices();
                 buttonFunctions.resetScore();
@@ -356,7 +358,10 @@ const buttons = {
                 
             }),
         popUpClose: 
-            document.getElementById("pop-up").addEventListener("click", buttonFunctions.popUpClose)
+            document.getElementById("pop-up").addEventListener("click", buttonFunctions.popUpClose),
+        popUpCloseInvisible:
+            document.getElementById("pop-up-invisible").addEventListener("click", buttonFunctions.popUpClose)
+                           
 }
      
     return {Gameboard, players}

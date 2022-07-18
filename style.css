@@ -29,14 +29,13 @@ body {
     display: grid;
     align-content: space-around;
     justify-content: center;
-    background-color: bisque;
 }
 #game-board {
     width: 30vw;
     height: 30vw;
     min-width: 200px;
     min-height: 200px;
-    background-color: beige;
+    background-color: #F7F9F6;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -58,11 +57,21 @@ body {
     border-right: 4px solid black;
 }
 #reset {
-    margin-top: 20px;;
+   margin-bottom: 30px;
+}
+#reset button {
+    height: 30px;
+    width: 30%;
+    border-radius: 15px;
+    background-color: #D9F2FF;
+    border-color: transparent;
 }
 .modes button {
     width: 100%;
     height: 40px;
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: #D9F2FF;
 }
 #players {
     display: grid;
@@ -116,17 +125,13 @@ body {
     border-radius: 50%;
 	Background: #EDF1EC;
     opacity: 0.8;
-	Box-sizing: border-box; /* for inside padding */
+	Box-sizing: border-box;
 	Padding: 10px;
-
-	/* for center */
 	Position:absolute;
 	top:50%;
 	left:50%;
 	Transform: translate(-50%,-50%);
-
-	/* for hider */
-	 display: none;  
+	display: none;  
 }
 #pop-up-text {
     width: 100%;
@@ -137,5 +142,4 @@ body {
     font-size: calc(1em + 6vw);
     font-weight: 600;
     overflow-wrap: normal;
-
 }

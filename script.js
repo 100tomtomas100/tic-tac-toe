@@ -242,7 +242,7 @@ const ticTacToe = (() => {
                         }
                         return {allCells}
                     })();
-            window.onload ()          
+            window.onload ();       
         }
     const buttonFunctions = {
             switchChoices: function () {
@@ -257,11 +257,15 @@ const ticTacToe = (() => {
             pvp: function () {
                 players.computer.active = false;
                 document.getElementById("player2-computer").innerHTML = "Player 2";
+                document.getElementById("start1").innerHTML = "Start";
+                document.getElementById("start2").innerHTML = "";
                 reset();
             },
             cvp: function () {
                 players.computer.active = true;
                 document.getElementById("player2-computer").innerHTML = "&nbsp&nbsp&nbsp&nbsp&nbspEasy";
+                document.getElementById("start1").innerHTML = "Start";
+                document.getElementById("start2").innerHTML = "";
                 reset();
             },
             score: function (player) {
@@ -281,11 +285,15 @@ const ticTacToe = (() => {
                     players.computer.start = true;
                 }
                     players.start = "player2"
+                    document.getElementById("start1").innerHTML = "";
+                    document.getElementById("start2").innerHTML = "Start";
                 } else if (players.start === "player2"){
                     if(players.computer.active === true){
                         players.computer.start = false;
                     }
                     players.start = "player1"
+                    document.getElementById("start1").innerHTML = "Start";
+                    document.getElementById("start2").innerHTML = "";
                 }
                 reset();
             },
@@ -303,18 +311,21 @@ const buttons = {
             document.getElementById("reset").addEventListener("click", () => {
                 reset();
                 buttonFunctions.resetScore();
+                document.getElementById("start1").innerHTML = "Start";
+                document.getElementById("start2").innerHTML = "";
             }),
         switchChoices : 
             document.getElementById("switch-choices").addEventListener("click", buttonFunctions.switchChoices),
         pvp:
             document.getElementById("pvp").addEventListener("click",() => {
-                 buttonFunctions.pvp();
-                 buttonFunctions.resetScore();
+                buttonFunctions.pvp();
+                buttonFunctions.resetScore();
+                
             }),
         cvp:
             document.getElementById("cvp").addEventListener("click", () => {
                 buttonFunctions.cvp();
-                buttonFunctions.resetScore();
+                buttonFunctions.resetScore();                
             }),
         popUpClose: 
             document.getElementById("pop-up").addEventListener("click", buttonFunctions.popUpClose)

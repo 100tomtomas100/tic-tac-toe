@@ -7,21 +7,27 @@ body {
     height: 100vh;
     width: 100vw;
     display: grid;    
-    grid-template-rows: 1fr 5fr;
-    background-color: blue;
+    grid-template-rows: 1fr 6fr;
 }
 #header {
     grid-row: 1/2;
     height: 100%;
-    width: 100%;    
-    background-color: aqua;
+    width: 100%;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#header p {
+    font-size: calc(1em + 5vw);
+    font-weight: 600;
+    font-style: italic;
 }
 #middle {
     grid-row: 2/3;
     height: 100%;
     width: 100%;    
     display: grid;
-    align-content: center;
+    align-content: space-around;
     justify-content: center;
     background-color: bisque;
 }
@@ -43,6 +49,7 @@ body {
     justify-content: center;
     font-weight: 600;
     font-size: calc(2.5em + 3vw);
+    font-style: italic;
 }
 #cell1, #cell2, #cell3, #cell4, #cell5, #cell6 {
     border-bottom: 4px solid black;
@@ -52,4 +59,83 @@ body {
 }
 #reset {
     margin-top: 20px;;
+}
+.modes button {
+    width: 100%;
+    height: 40px;
+}
+#players {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    font-weight: 600;
+    font-style: italic;
+    font-size: calc(1em + 1.5vw);
+}
+#score {
+    grid-area: 2/1/3/3;
+    display: flex;
+    justify-content: center;
+    color: blue;
+}
+#player1 {
+    grid-area: 3/1/4/2;
+    display:flex;
+   
+}
+#player2 {
+    grid-area: 3/2/4/3;
+    display: flex;
+    justify-content: flex-end;
+}
+#player1score {
+    margin-left: 15px;
+    color: blue;
+}
+#player2score {
+    margin-right: 15px;
+    color: blue;
+}
+#choices {
+    grid-area: 4/1/5/3;
+    display: flex;
+    justify-content: space-between;
+}
+#start {
+    grid-area: 1/1/2/3;
+    display: flex;
+    justify-content: space-between;
+    font-size: calc(0.5em + 1.5vw);
+    color: red;
+}
+#pop-up{
+	width: 40vw;
+    height: 40vw;
+    min-width: 300px;
+    min-height: 300px;
+    border-radius: 50%;
+	Background: #EDF1EC;
+    opacity: 0.8;
+	Box-sizing: border-box; /* for inside padding */
+	Padding: 10px;
+
+	/* for center */
+	Position:absolute;
+	top:50%;
+	left:50%;
+	Transform: translate(-50%,-50%);
+
+	/* for hider */
+	 display: none;  
+}
+#pop-up-text {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    font-size: calc(1em + 6vw);
+    font-weight: 600;
+    overflow-wrap: normal;
+
 }

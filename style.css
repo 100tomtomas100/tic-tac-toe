@@ -1,3 +1,71 @@
+@media only screen and (min-width: 600px) {
+body #middle {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 6fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+}
+#middle #game-board {
+    grid-area: 1/2/2/3;
+    
+}
+#middle #modes {
+    grid-area: 1/1/2/2;
+    display: grid;    
+    align-content: flex-start;
+    gap: 10px;
+}
+#modes button {
+    width: 30vw;
+    height: 15vw;
+    min-height: 100px;
+    min-width: 150px;
+    
+}
+#middle #players {
+    height: 30vw;
+    grid-area: 1/3/2/4;
+    display: grid;
+    align-content: space-between;
+    font-size: calc(1em + 1vw);
+    width: 30vw;
+    min-width: 200px; 
+    grid-template-rows: 3.2fr 1.2fr 1.5fr 1fr;
+}
+#middle #reset {
+    height: 100%;
+    grid-area: 2/3/3/4;
+    display: grid;
+    align-items:flex-start;    
+}
+#players #choices {
+    font-size: calc(1.5em + 0.8vw);
+}
+#players #players-1-2 {
+    align-items: center;  
+    text-decoration: underline;
+}
+#players #points {
+    font-size: calc(1.5em + 0.8vw);
+    align-items: flex-end;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr  1fr;
+}
+#points #player1score {
+    grid-area: 2/1/3/2;
+   
+}
+#points #score {
+    grid-area: 1/2/2/3;    
+    text-decoration: underline;
+}
+#points #player2score {
+    grid-area: 2/3/3/4;
+    display: flex;
+    justify-content: flex-end;
+}
+}
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,6 +77,17 @@ body {
     display: grid;    
     grid-template-rows: 1fr 8fr;
 }
+body::after {
+    content: "";
+    background: url(img/background.png);
+    opacity: 0.03;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 #header {
     grid-row: 1/2;
     height: 100%;
@@ -35,7 +114,7 @@ body {
     height: 30vw;
     min-width: 200px;
     min-height: 200px;
-    background-color: #F7F9F6;
+    background-color: #F5FAFF;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -70,8 +149,8 @@ body {
     height: 30px;
     width: 45%;
     border-radius: 15px;
-    background-color: #D9F2FF;
-    border-color: transparent;
+    background-color: #CAE2FB;
+    border: 2px solid black;
     font-weight: 600;
     font-size: 12px;
     cursor: pointer;
@@ -94,7 +173,7 @@ body {
     min-width: 100px;
     border-radius: 20px;
     border-color: transparent;
-    background-color: #FAFDFE;
+    background-color: #F7FAFA;
     font-weight: 600;
     cursor: pointer;
     border: 1px solid black
@@ -121,34 +200,34 @@ body {
     grid-area: 1/1/2/3;
     display: flex;
     justify-content: space-between;
+    font-weight: 800;
+    font-size: 25px;
 }
 #start-score {
     grid-area: 2/1/3/3;
     display: flex;
     justify-content: space-between;
-    color: blue;
 }
 #players-1-2 {
     grid-area: 3/1/4/3;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: space-between;  
 }
 #empty {
     width: 6vw;
 }
 #player1score {
     margin-left: 15px;
-    color: blue;
+    color: black;
 }
 #player2score {
     margin-right: 15px;
-    color: blue;
+    color: black;
 }
 #choices {
     grid-area: 4/1/5/3;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 #switch-choices {
     cursor: pointer;
@@ -175,7 +254,7 @@ body {
     min-height: 300px;
     border-radius: 50%;
 	Background: #EDF1EC;
-    opacity: 0.7;
+    opacity: 0.9;
 	Box-sizing: border-box;
 	Padding: 10px;
 	Position:absolute;

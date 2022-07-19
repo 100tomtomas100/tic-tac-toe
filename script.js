@@ -321,6 +321,7 @@ const buttons = {
                 players.start = "player1";
                 players.player1 = "o"
                 players.player2 = "x"  
+                players.computer.start = false;
                 reset();
                 buttonFunctions.resetScore();
                 

@@ -15,15 +15,15 @@
     <p id="pop-up-text2"></p></div></div>
     <div id="pop-up-invisible"></div>
     <div id="middle">
-       
+        <div id="modes">
             <div class="modes" id="pvp">
-                <button>Person VS Person</button>
+                <button type="button"><img src="img/pvp.png" alt="player versus player"></button>
             </div>
             <div class="modes" id="cvp">
-                <button>Computer VS Person</button>
+                <button type="button"><img src="img/pvspc.png" alt="player versus computer"></button>
             </div>
-        
-            <div id="game-board">
+        </div>
+        <div id="game-board">
                 <div class="cell" id="cell1"></div>
                 <div class="cell" id="cell2"></div>
                 <div class="cell" id="cell3"></div>
@@ -33,9 +33,8 @@
                 <div class="cell" id="cell7"></div>
                 <div class="cell" id="cell8"></div>
                 <div class="cell" id="cell9"></div>
-            </div>
-        
-        <div id ="players">
+        </div>       
+        <div id="players">
             <div id="points"><p id="player1score">0</p><div id="score">Score</div><p id="player2score">0</p></div>
             <div id="start-score"><div id="start1"><p>Start</p></div><div id="start2"><p></p></div></div>
             <div id="players-1-2"><div id="player1" ><p>Player 1</p></div><div id="empty"></div>
@@ -43,7 +42,7 @@
             <div id ="choices"><p id="player1choice"></p><p id="switch-choices" >&#8646;</p><p id="player2choice"></p></div>
         </div>
         <div id="reset">
-            <button>RESET</button>
+            <button type="button">RESET</button>
         </div>
     </div>
     <script src="script.js"></script>

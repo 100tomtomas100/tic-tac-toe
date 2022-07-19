@@ -61,7 +61,8 @@ body {
 #reset {
     width: 30vw;
     min-width: 200px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     justify-items: flex-start;
 }
@@ -81,7 +82,11 @@ body {
 #modes{
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+#pvp {
+    margin-right: 5px;
 }
 .modes button {
     width: 15vw;

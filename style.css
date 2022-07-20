@@ -131,6 +131,9 @@ body::after {
     font-style: italic;
     cursor: pointer;
 }
+.cell:hover {
+    background-color: #C3DDF9;
+}
 #cell1, #cell2, #cell3, #cell4, #cell5, #cell6 {
     border-bottom: 4px solid black;
 }

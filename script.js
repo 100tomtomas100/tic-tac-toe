@@ -17,8 +17,7 @@ const ticTacToe = (() => {
             player1.innerHTML = "\u2718"; 
             player1.style.color = "black"
         };
-        }
-        
+    };        
     const Gameboard = {
         gameboard: Array.from(document.getElementsByClassName("cell")),
         remainingCellId: (() => { 
@@ -31,7 +30,7 @@ const ticTacToe = (() => {
         cellsClickedNr: [],
         XandOhistory: [],
         cellsClickedId: [],
-        lastClickedCellNr: []
+        lastClickedCellNr: []        
     };
     const players = new function () {
         this.player1Score = 0;
@@ -40,8 +39,8 @@ const ticTacToe = (() => {
         this.computer = {
             active: false,
             start: false,
-            mode: "easy"
-        };
+            mode: "easy"            
+        };           
         this.player1 = "o";
         this.player2 = (() => {
             if (this.player1 === "x") {
@@ -49,10 +48,8 @@ const ticTacToe = (() => {
             } else {
                 return "x";
             }          
-        })();
-    
-    };
-    
+        })();    
+    };  
     clickableSquares = {
         squares: Gameboard.gameboard.forEach((element) => {
             element.addEventListener("click", () => {
@@ -62,7 +59,7 @@ const ticTacToe = (() => {
                  }
             })
         }) 
-    }
+    };
     const computer = {
             modes: function() { 
                 let leftChoices = Gameboard.remainingCellId.allCells.length;                    
@@ -80,20 +77,17 @@ const ticTacToe = (() => {
                 easy = (() => {                    
                     if (players.computer.mode === "easy" && players.computer.start === true && gameEnebled === true) {                        
                         if(Gameboard.XandOhistory.length === 0 || Gameboard.XandOhistory.length % 2 === 0 ) {
-                            gameFlow.XandO(randomChoiceArr);                            
+                            gameFlow.XandO(randomChoiceArr);                        
                         }
                     } else if (players.computer.mode === "easy" && players.computer.start === false && gameEnebled === true) {
                         if(Gameboard.XandOhistory.length % 2 === 1) {
                             gameFlow.XandO(randomChoiceArr);                            
                         }
                     }
-                    })()
+                    })(); 
                 }
             }
-        }
-    
-
-
+    };         
     const gameFlow = {
         XandO: function (element) {
             const startingInput = players[players.start];                      
@@ -121,17 +115,11 @@ const ticTacToe = (() => {
             }
             Gameboard.cellsClickedId.push(element.getAttribute("id"));
             lastClickedCellNrSquare();
-            victory();  
-            computer.modes();
-            console.log(players.player1)
-            console.log(players.player2) 
-            console.log(players.start)
-            
-
-        }
-        
-    };
-    
+            gameEnd.win();  
+            gameEnd.draw();
+            computer.modes();           
+        }        
+    };     
     const lastClickedCellNrSquare = () => {
         let lastCell = Gameboard.cellsClickedId[Gameboard.cellsClickedId.length - 1]
                 let i = 0;
@@ -143,7 +131,7 @@ const ticTacToe = (() => {
                     } 
                 }
                 })();                         
-    };
+    };    
     let WinningCombinations = [
         [0, 1, 2],
         [3, 4, 5],
@@ -163,10 +151,13 @@ const ticTacToe = (() => {
         document.getElementById("pop-up-text1").textContent = `${player}`;
         document.getElementById("pop-up-text2").textContent = `${text}`;
        }      
-    }
-        
-    const victory = () => {
-        let win = (() => {
+    };        
+    const gameEnd =  {
+       win: function () {
+        Gameboard.computerBoard = []
+        for (l = 0; WinningCombinations.length > l; l++) {
+            Gameboard.computerBoard.push(WinningCombinations[l]);
+        }
             for (let i = 0; WinningCombinations.length > i; i++) {
                 for (let j = 0; WinningCombinations[i].length > j; j++){
                     if (WinningCombinations[i][j] === Gameboard.lastClickedCellNr) {
@@ -207,17 +198,18 @@ const ticTacToe = (() => {
                         popUp.box();   
                         gameEnebled = false;                      
                         break;                           
-                    }
+                    } 
                 };                         
-            }
-            if (Gameboard.XandOhistory.length === 9 && gameEnebled === true)  {  
+            }            
+        },
+    draw: function (){
+        if (Gameboard.XandOhistory.length === 9 && gameEnebled === true)  {  
                 popUp.boxtext("It`s a", "Draw!!!");
                 popUp.box();
                 gameEnebled = false;
             } 
-        })();
-    }; 
-     
+    }    
+    };     
     const reset = function () {
             gameEnebled = true;
             WinningCombinations = [
@@ -282,7 +274,6 @@ const ticTacToe = (() => {
                     players.player2Score += 1;
                     document.getElementById("player2score").innerText = players.player2Score;
                 }
-
             },
             popUpClose: function () {
                 document.getElementById("pop-up").style.display = "none"; 
@@ -309,11 +300,9 @@ const ticTacToe = (() => {
                 players.player2Score = 0; 
                 document.getElementById("player1score").innerHTML = 0;
                 document.getElementById("player2score").innerHTML = 0;
-            }
-            
-    }
-    
-const buttons = {
+            }            
+    };    
+    const buttons = {
         reset:
             document.getElementById("reset").addEventListener("click", () => {
                 document.getElementById("start1").innerHTML = "Start";
@@ -323,8 +312,7 @@ const buttons = {
                 players.player2 = "x"  
                 players.computer.start = false;
                 reset();
-                buttonFunctions.resetScore();
-                
+                buttonFunctions.resetScore();                
             }),
         switchChoices : 
             document.getElementById("switch-choices").addEventListener("click", () => {
@@ -343,9 +331,7 @@ const buttons = {
                 players.player1 = "o"
                 players.player2 = "x"  
                 buttonFunctions.pvp();
-                buttonFunctions.resetScore();
-                
-                
+                buttonFunctions.resetScore();               
             }),
         cvp:
             document.getElementById("cvp").addEventListener("click", () => {
@@ -355,16 +341,13 @@ const buttons = {
                 players.player1 = "o"     
                 players.player2 = "x"        
                 buttonFunctions.cvp();
-                buttonFunctions.resetScore(); 
-                
+                buttonFunctions.resetScore();                 
             }),
         popUpClose: 
             document.getElementById("pop-up").addEventListener("click", buttonFunctions.popUpClose),
         popUpCloseInvisible:
-            document.getElementById("pop-up-invisible").addEventListener("click", buttonFunctions.popUpClose)
-                           
+            document.getElementById("pop-up-invisible").addEventListener("click", buttonFunctions.popUpClose)                         
 }
-     
     return {Gameboard, players}
 })();
         
